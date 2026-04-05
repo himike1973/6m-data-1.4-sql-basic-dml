@@ -10,19 +10,11 @@
 
 ---
 
-**Post-class Materials**
-
-* **Deep Dive:** [DuckDB Documentation on Aggregate Functions](https://duckdb.org/docs/sql/aggregates).  
-* **Optional Reading:** "SQL Performance Tuning for Beginners" – Why SELECT \* is often avoided in production.
-
-
----
-
 Write the SQL DML statements for the following questions.
 
 ## Instructions
 
-Paste the answer as SQL in Discord Peer-Review channel. https://discord.com/channels/1165846570177150996/1457586759667028094
+Write your SQL answers in the code blocks below each question. Check your work against the solution key at the bottom. To share your work with peers, post in **#peer-reviews** on Discord. For questions, post in **#questions**.
 
 ### Question 1
 
@@ -62,12 +54,14 @@ Count the number of flats sold in each town during the first quarter of 2017 (Ja
 ```
 
 ---
-## **🛑 STOP\! Solutions Below**
-
-*Try to solve the problems above before scrolling down.*
+---
 
 ## **✅ Solutions**
 
+*Attempt all questions before expanding the solutions below.*
+
+<details>
+<summary>Click to reveal — Project: The Property Analyst</summary>
 
 ### Part 1: The Core Solution
 To find the top 5 largest flats in undervalued towns (average price < $450k), we use a Subquery. This allows us to first identify the "undervalued" list and then look inside that list for the biggest homes.
@@ -99,6 +93,11 @@ The Breakdown:
 
 - The Result: Finally, we ORDER BY floor_area_sqm DESC to put the biggest units at the top and LIMIT 5 to keep it concise.
 
+</details>
+
+<details>
+<summary>Click to reveal — Level Up Solution</summary>
+
 ### Part 2: The "Level Up" Solution
 This challenge tests the ability to perform math across columns and then aggregate that math.
 
@@ -120,6 +119,11 @@ The Breakdown:
 - The Aggregation: We then take the AVG() of those calculated results for each town.
 
 - The Winner: By ordering ASC (ascending) and using LIMIT 1, we isolate the single town that gives you the most space for every dollar spent.
+
+</details>
+
+<details>
+<summary>Click to reveal — Questions 1–4 Solutions</summary>
 
 ### Question 1
 
@@ -168,3 +172,10 @@ GROUP BY town
 ORDER BY flats_sold DESC;
 ```
 
+</details>
+
+---
+
+**Post-class reading:**
+- [DuckDB Documentation on Aggregate Functions](https://duckdb.org/docs/sql/aggregates)
+- *SQL Performance Tuning for Beginners* — Why `SELECT *` is often avoided in production
