@@ -311,6 +311,16 @@ ORDER BY
 
 `WHERE` filters individual rows **before** they are grouped. To filter on aggregated results, use `HAVING` — the *post-grouping filter*.
 
+💡 SQL execution order: 
+1. FROM / JOIN
+2. WHERE
+3. GROUP BY
+4. AGGREGATE (SUM/AVG/COUNT/MIN/MAX)
+5. HAVING
+6. SELECT
+7. ORDER BY
+8. LIMIT
+
 **WHERE vs. HAVING side-by-side:**
 
 ```sql
@@ -321,7 +331,7 @@ SELECT
 FROM
   resale_flat_prices_2017
 WHERE
-  resale_price > 500000
+  resale_price > 600000
 GROUP BY
   town;
 ```
@@ -336,7 +346,7 @@ FROM
 GROUP BY
   town
 HAVING
-  AVG(resale_price) > 500000;
+  AVG(resale_price) > 600000;
 ```
 
 Filter to show only towns with high average prices:
@@ -354,6 +364,7 @@ HAVING
 ORDER BY
   avg_price DESC;
 ```
+💡 HAVING accepts alias defined earlier in SELECT statement.
 
 Group by multiple columns:
 
@@ -509,7 +520,7 @@ FROM
 ## 🎯 Wrap-Up
 
 **Key Takeaways:**
-1. **SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY** — this is the logical execution order. Understanding it prevents most beginner SQL errors.
+1. **SELECT → FROM → WHERE → AGGREGATE → GROUP BY → HAVING → ORDER BY → LIMIT** — this is the logical execution order. Understanding it prevents most beginner SQL errors.
 2. Aggregate functions collapse rows — always pair them with `GROUP BY` for meaningful results.
 3. `CASE` and `CAST` are your cleaning tools — categorise messy text and convert mistyped columns directly in your query.
 
