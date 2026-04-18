@@ -50,7 +50,19 @@ Categorize flats into price ranges and count how many flats fall into each categ
   Show the counts in descending order.
 
 ```sql
+SELECT
+CASE 
+    when resale_price < 400000 then 'Budget'
+    when resale_price <= 700000 then 'Mid_Range'
+    Else 'Premium'
+End as category,
 
+Count(*) As Number_Flat
+
+FROM
+  resale_flat_prices_2017
+GROUP by category
+order by Number_Flat DESC;
 ```
 
 ### Question 4
